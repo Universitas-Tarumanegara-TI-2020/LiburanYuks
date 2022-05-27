@@ -1,0 +1,61 @@
+<% Hal.forEach((Forum)=>{ %>
+<form class="container-xl" action="/posting/edit/<%= Forum._id %>" method="post">
+    <%- include ("partials/messages"); %>
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Title</label>
+          <div class="col-sm-10">
+              <div class="mb-3">
+                  <input class="form-control" for="nama" id="nama" name="nama" value="<%= Forum.nama %>" type="text">
+              </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Gambar</label>
+          <div class="col-sm-10">
+              <div class="mb-3">
+                  <input class="form-control" type="text" for="gambar" id="gambar" name="gambar" value="<%= Forum.gambar %>" placeholder="Masukan dalam bentuk url">
+              </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Deskripsi Singkat</label>
+          <div class="col-sm-10">
+              <div class="mb-3">
+                  <textarea class="form-control" for="des_pdk" id="des_pdk" name="des_pdk"rows="3"><%= Forum.des_pdk %></textarea>
+              </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label class="col-sm-2 col-form-label">Penjelasan lengkap</label>
+          <div class="col-sm-10">
+              <div class="mb-3">
+                  <textarea class="form-control" for="des_pjg" id="des_pjg" name="des_pjg" rows="3"><%= Forum.des_pjg %></textarea>
+              </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          Submit
+        </button>
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Perhatian</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Terima Kasih atas Data yang telah anda masukan. Tekan tombol "Sure" jika Data yang anda masukan telah benar
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form form action="/posting/edit/<%= Forum._id %>">
+                    <button type="submit" class="btn btn-primary">Sure</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+  </form>
+<%}); %>

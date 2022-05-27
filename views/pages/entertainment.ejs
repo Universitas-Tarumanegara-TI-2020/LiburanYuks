@@ -1,0 +1,51 @@
+<section class="py-5 " style="background-color: #CAE7DF;">
+  <div class="container px-4 px-lg-5 mt-5" >
+    <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+      <% Enter.forEach((Forum)=>{ %>
+      <div class="col mb-5 pt-4">
+        <!--card-->
+        <div class="card h-100">             
+          <img class="card-img-top" src="<%= Forum.gambar %>" alt="..." height="200px" width="450px" class="rounded-3" />
+          <div class="card-body p-4">
+            <div>
+              <h2 class="fw-bolder"><%= Forum.nama %></h2>
+            </div>
+            <div>
+              <p><%= Forum.des_pdk %></p>
+            </div>
+          </div>
+          <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+            <div class="text-center"><a class="btn btn-outline-dark mt-auto stretched-link" href="/halaman/<%= Forum._id %>/<%= Forum.nama %>">Go To</a></div>
+          </div>   
+        </div> 
+        <% if (locals.isAdmin) { %>
+          <div class="container">
+            <div class="row justify-content-center pt-3">
+              <div class="col-4">
+                <form action="/posting/delete/<%= Forum._id %>">
+                  <button type="submit" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete" ><i data-feather="trash-2"></i></button>
+                </form>
+              </div>
+              <div class="col-4">
+                <div><a class="btn btn-outline-success" href="/edit/<%= Forum._id %>" role="button"><i data-feather="edit"></i></a></div>
+              </div>
+            </div>
+          </div>
+          <% } else { %>
+          <% } %>
+      </div>
+      <%}); %> 
+      <% if (locals.isAdmin) { %>
+        <div class="container p-4">
+          <div class="card h-100 btn btn-outline-dark pt-4">             
+            <img class="card-img-top" src="/Gambar/plus-icon-13074.png" alt="..." height="250px" width="250px" class="rounded-3"/>
+            <h2 class="fw-bolder pt-4"> + Post</h2>
+            <a class="stretched-link" href="/post/"></a>
+          </div>
+        </div>
+      <% } else { %>
+      <% } %>         
+    </div> 
+  </div>
+</div>
+</section>

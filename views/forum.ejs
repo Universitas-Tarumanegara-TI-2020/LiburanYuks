@@ -1,0 +1,53 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <% Hal.forEach((Forum)=>{ %>
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1"><%= Forum.nama %></h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2"></div>
+                    <!-- Post categories-->
+                    <a class="badge bg-secondary text-decoration-none link-light" href="#!"><%= Forum.section %></a>
+                </header>
+                <!-- Preview image figure-->
+                <figure class="mb-4"><img class="img-fluid rounded" src="<%= Forum.gambar %>" alt="..." /></figure>
+                <!-- Post content-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-4"><%= Forum.des_pjg %></p>
+                </section>
+            </article>
+            <!-- Comments section-->
+            <section class="mb-5">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <!-- Comment form-->
+                        <form class="mb-4" action="/comments/comment/<%= Forum.nama %>" method="POST">
+                            <input type="user"id="user"name="user"class="form-control mb-3 rounded-pill"placeholder="Enter your username">
+                            <textarea class="form-control mb-3" rows="3" id="comment" name="comment" placeholder="Join the discussion and leave a comment!"></textarea>
+                            <button type="submit" class="btn btn-primary btn-block">
+                                Submit
+                              </button>
+                        </form>
+                        <!-- Comment with nested comments-->
+                        <% Com.forEach((Comment)=>{ %>
+                            <div class="d-flex mb-4">
+                            <!-- Parent comment-->
+                            <div class="flex-shrink-0"><img class="rounded-circle" src="/Gambar/login_icon.png" style="width: 50px;" alt="..." /></div>
+                            <div class="ms-3">
+                                <div class="fw-bold"><%= Comment.user %></div>
+                                <p5><%= Comment.date %></p5>
+                                <h4><%= Comment.comment %></h4>
+                            </div>
+                            </div>
+                        <%}); %>
+                    </div>
+                </div>
+            </section>
+            <%}); %>
+        </div>
+    </div>
+</div>

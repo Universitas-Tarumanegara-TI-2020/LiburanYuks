@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light rounded-bottom mb-3" style="background-color:#00BFFF ;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><img src="/Gambar/Logo1.png" alt="" width="75px" style="background-color: rgb(255, 255, 255)" class="rounded-circle"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link fs-4" href="/destination">Destination</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-4" href="/cuisine">Cuisine</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-4" href="/entertainment">Entertainment</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-4" href="/lodging">Lodging</a>
+        </li> 
+        </ul>
+        <% if (locals.isLoggedIn || locals.isAdmin) { %>
+          <div class="dropdown mx-2">
+            <button class="btn btn-danger dropdown-toggle rounded-pill" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Selamat Datang</button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="/users/logout">Log Out</a></li>
+            </ul>
+          </div>
+        <% } else { %>
+          <a class="btn btn-outline-dark fs-4 text-decoration-none px-4" href="/register">Register</a>
+          <a class="btn btn-success fs-4 text-decoration-none px-5 mx-2" href="/login">Login</a>
+        <% } %>
+    </div>
+  </div>
+</nav>
